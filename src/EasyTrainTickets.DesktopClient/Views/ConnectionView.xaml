@@ -1,0 +1,32 @@
+﻿<Window x:Class="EasyTrainTickets.DesktopClient.Views.ConnectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasyTrainTickets.DesktopClient.Views"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="300" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Pociąg: " FontSize="24"
+                 VerticalAlignment="Center"/>
+            <TextBlock Name="NameTrain" FontSize="24"
+                 VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Image Name="TrainPicture" Grid.Column="1" Source="{Binding Picture}" Width="30" Height="30"/>
+
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" Name="Itinerary" FontFamily="Courier New">
+            
+        </ListBox>
+    </Grid>
+</Window>

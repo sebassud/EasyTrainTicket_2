@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="EasyTrainTickets.DesktopClient.Views.BuyTicketView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EasyTrainTickets.DesktopClient.Views"
+             mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="combostyle" TargetType="{x:Type xctk:CheckComboBox }">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsEnabled, ElementName=Confirm}" Value="True">
+                    <Setter Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Rezerwacja" Margin="10,10,10,10" HorizontalAlignment="Center" FontSize="32"/>
+            <TextBlock Name="Way" Margin="10,10,10,10" FontFamily="Courier New"/>
+            <TextBlock Text="{Binding Ticket}" Margin="10,10,10,10" FontFamily="Courier New" TextWrapping="Wrap"/>
+            <Image Source="{Binding SourcePicture}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="CurrentReservation" Margin="10,10,10,10" FontFamily="Courier New" />
+                <xctk:CheckComboBox ItemsSource="{Binding Seats}" Style="{StaticResource combostyle}"
+                                    Width="200" SelectedValue="{Binding SelectedValue}" Delimiter="," >
+                </xctk:CheckComboBox>
+            </StackPanel>
+            <Button Name="Next" HorizontalAlignment="Right" Margin="20,20,20,20" Content="Dalej" Height="30" Width="70"/>
+            <TextBlock Text="{Binding Ticket.DiscountView}"/>
+        </StackPanel>
+        <DockPanel Grid.Row="1">
+            <Button Name="Cancel" Width="200" Height="50" Content="Anuluj" DockPanel.Dock="Left" Margin="10,10,10,10"/>
+            <Button Name="Confirm" Width="200" Height="50" Content="Zatwierdź" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="10,10,10,10"/>
+        </DockPanel>
+    </Grid>
+</UserControl>
